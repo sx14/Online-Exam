@@ -42,7 +42,7 @@
         <property name="dataSource" ref="c3p0DataSource" />
         <property name="packagesToScan">
             <list>
-                <value>com.springmvc.entities</value>
+                <value>com.springmvc.entity</value>
             </list>
         </property>
         <property name="hibernateProperties">

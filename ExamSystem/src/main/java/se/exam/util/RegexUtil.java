@@ -1,4 +1,4 @@
-package com.springmvc.util;
+package se.exam.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -1,4 +1,4 @@
-package com.springmvc.dao;
+package se.exam.dao.impl;
 
 
 import org.hibernate.*;
@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Repository
-public class BaseDao {
-	private static final Logger log = LoggerFactory.getLogger(BaseDao.class);
+public class BaseDAOImpl {
+	private static final Logger log = LoggerFactory.getLogger(BaseDAOImpl.class);
 
 	@Resource
 	private SessionFactory sessionFactory;
@@ -65,7 +65,6 @@ public class BaseDao {
 		} finally {
 			session.close();
 		}
-
 	}
 
 	public boolean delete(Object entity) {

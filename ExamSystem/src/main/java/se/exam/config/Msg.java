@@ -1,4 +1,4 @@
-package com.springmvc.config;
+package se.exam.config;
 
 /**
  * Created by Jiayiwu on 16/5/26.

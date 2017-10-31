@@ -1,9 +1,8 @@
-package com.springmvc.entities;
+package se.exam.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 /**
  * Created by wzh on 17/01/2017.

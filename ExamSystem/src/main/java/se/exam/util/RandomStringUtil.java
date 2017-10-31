@@ -1,4 +1,4 @@
-package com.springmvc.util;
+package se.exam.util;
 
 import java.util.Random;
 

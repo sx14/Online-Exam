@@ -1,8 +1,8 @@
-package com.springmvc.controller;
+package se.exam.controller;
 
-import com.springmvc.blservice.UserBLService;
-import com.springmvc.config.Msg;
-import com.springmvc.vo.ResultMessageVO;
+import se.exam.bl.UserService;
+import se.exam.entity.UserEntity;
+import se.exam.vo.ResultMessageVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,15 +18,17 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
     @Resource
-    UserBLService userBLService;
+    UserService userService;
 
     @RequestMapping(value = "/member/login",method = RequestMethod.POST)
     @ResponseBody
-    public ResultMessageVO login(HttpSession session,String userId, String password) {
-        ResultMessageVO resultMessageVO = userBLService.login(userId,password);
-        if (resultMessageVO.getStatus() == Msg.SUCCESS){
-            session.setAttribute("Id",userId);
+    public ResultMessageVO login(HttpSession session, String userId, String password) {
+        UserEntity user = userService.login(userId,password);
+        if (user != null){
+            //TODO 身份验证成功
+        }else {
+            //TODO 验证失败
         }
-        return resultMessageVO;
+        return null;
     }
 }

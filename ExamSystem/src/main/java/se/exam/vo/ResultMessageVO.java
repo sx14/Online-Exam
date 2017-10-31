@@ -1,6 +1,6 @@
-package com.springmvc.vo;
+package se.exam.vo;
 
-import com.springmvc.config.Msg;
+import se.exam.config.Msg;
 
 /**
  * Created by guhan on 16/8/29.
