@@ -10,28 +10,31 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 public class UserEntity {
-    private int uid;
+    private String uid;
     private String username;
     private String password;
     private String name;
+    private String email;
     private int userType;
 
     public UserEntity() {
     }
 
-    public UserEntity(String username, String password, String name, int userType) {
+    public UserEntity(String uid, String username, String password, String name, String email, int userType) {
+        this.uid = uid;
         this.username = username;
         this.password = password;
         this.name = name;
+        this.email = email;
         this.userType = userType;
     }
 
     @Id
-    public int getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
@@ -66,4 +69,12 @@ public class UserEntity {
     public void setName(String name) {
         this.name = name;
     }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
