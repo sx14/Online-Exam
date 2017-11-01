@@ -6,10 +6,10 @@ import se.exam.entity.UserEntity;
 public interface UserDAO {
     /**
      * 根据用户名查找用户
-     * @param userName 用户名唯一
+     * @param userId 账号
      * @return 唯一用户
      */
-    public UserEntity getUserByUsername(String userName);
+    public UserEntity getUserByUserId(String userId);
 
     /**
      * 创建新用户

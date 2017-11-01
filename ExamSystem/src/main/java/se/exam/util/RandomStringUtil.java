@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class RandomStringUtil {
 
-    public static String getRandomNumberString(int length){
+    public static String getRandomNumber(int length){
         String base = "0123456789";
         Random random = new Random();
         StringBuffer sb = new StringBuffer();

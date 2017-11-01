@@ -1,9 +1,10 @@
 package se.exam.bl.impl;
 
 import se.exam.bl.UserService;
+import se.exam.config.Msg;
 import se.exam.dao.UserDAO;
-import com.springmvc.entity.*;
 import se.exam.entity.UserEntity;
+import se.exam.util.RandomStringUtil;
 import se.exam.vo.ResultMessageVO;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +19,20 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserDAO userDAO;
 
-    public UserEntity login(String memberId, String password) {
+    public UserEntity login(String userId, String password) {
+        UserEntity userEntity = userDAO.getUserByUserId(userId);
+        if (userEntity.getPassword().equals(password)){
+            return userEntity;
+        }
         return null;
     }
 
     @Override
     public ResultMessageVO register(String username, String password, String name, String email, int userType) {
-        return null;
+        String uid = RandomStringUtil.getRandomNumber(10);
+        if (userDAO.createUser(new UserEntity(uid, username, password, name, email, userType))== Msg.SUCCESS){
+            return new ResultMessageVO(Msg.SUCCESS, "");
+        }
+        return new ResultMessageVO(Msg.FAIL, "");
     }
 }

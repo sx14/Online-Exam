@@ -8,7 +8,7 @@ $('#submit').click(function () {
     var password = $('#password').val();
     $.post("/member/login",
         {
-            'memberId':memberId,
+            'userId':memberId,
             'password':password
 
         },

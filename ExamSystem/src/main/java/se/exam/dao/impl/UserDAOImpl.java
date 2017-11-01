@@ -1,5 +1,6 @@
 package se.exam.dao.impl;
 
+import se.exam.config.Msg;
 import se.exam.dao.UserDAO;
 import se.exam.entity.UserEntity;
 import org.springframework.stereotype.Service;
@@ -16,12 +17,20 @@ public class UserDAOImpl implements UserDAO {
     @Resource
     BaseDAOImpl baseDao;
 
-    public UserEntity getUserByUsername(String memberId) {
-        return (UserEntity) baseDao.findById(UserEntity.class,memberId);
+    public UserEntity getUserByUserId(String userId) {
+        return (UserEntity) baseDao.findById(UserEntity.class,userId);
     }
 
     @Override
-    public boolean createUser(UserEntity newUser) {
-        return false;
+    public Msg createUser(UserEntity newUser) {
+        try
+        {
+            baseDao.save(newUser);
+        }
+        catch (Exception e){
+            return  Msg.FAIL;
+        }
+        return Msg.SUCCESS;
+
     }
 }

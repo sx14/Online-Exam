@@ -1,6 +1,7 @@
 package se.exam.controller;
 
 import se.exam.bl.UserService;
+import se.exam.config.Msg;
 import se.exam.entity.UserEntity;
 import se.exam.vo.ResultMessageVO;
 import org.springframework.stereotype.Controller;
@@ -20,15 +21,20 @@ public class UserController {
     @Resource
     UserService userService;
 
-    @RequestMapping(value = "/member/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/user/login",method = RequestMethod.POST)
     @ResponseBody
     public ResultMessageVO login(HttpSession session, String userId, String password) {
         UserEntity user = userService.login(userId,password);
         if (user != null){
-            //TODO 身份验证成功
+            return new ResultMessageVO(Msg.SUCCESS, "");
         }else {
-            //TODO 验证失败
+            return new ResultMessageVO(Msg.FAIL, "");
         }
-        return null;
+    }
+
+    @RequestMapping(value = "/user/register",method = RequestMethod.POST)
+    @ResponseBody
+    public ResultMessageVO register(String username, String password, String name, String email, int userType) {
+        return userService.register(username, password, name, email, userType);
     }
 }
