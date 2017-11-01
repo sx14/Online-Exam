@@ -1,5 +1,6 @@
 package se.exam.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -46,6 +47,7 @@ public class UserEntity {
         this.username = username;
     }
 
+    @Column(name = "user_type")
     public int getUserType() {
         return userType;
     }

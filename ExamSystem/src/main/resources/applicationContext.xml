@@ -13,7 +13,7 @@
 	     http://www.springframework.org/schema/aop/spring-aop.xsd
 	     http://www.springframework.org/schema/context
          http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:component-scan base-package="com.springmvc" />
+    <context:component-scan base-package="se.exam" />
     
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -31,7 +31,7 @@
         <property name="jdbcUrl" value="${mysqldb.url}">
         </property>
         <property name="user" value="${mysqldb.user}"/>
-        <property name="password" value="${mysqldb.password}"/>
+        <property name="password" value="=123456"/>
         <property name="maxPoolSize" value="40"/>
         <property name="minPoolSize" value="1"/>
         <property name="initialPoolSize" value="1"/>
@@ -42,7 +42,7 @@
         <property name="dataSource" ref="c3p0DataSource" />
         <property name="packagesToScan">
             <list>
-                <value>com.springmvc.entity</value>
+                <value>se.exam.entity</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -59,20 +59,5 @@
         </property>
     </bean>
 
-    <bean id="txManager"
-          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <tx:advice id="txAdvice" transaction-manager="txManager">
-        <tx:attributes>
-            <tx:method name="get*" propagation="REQUIRED" read-only="true" />
-            <tx:method name="del*" propagation="REQUIRED" />
-            <tx:method name="save*" propagation="REQUIRED" />
-            <tx:method name="update*" propagation="REQUIRED" />
-        </tx:attributes>
-    </tx:advice>
-    <aop:config>
-        <aop:pointcut id="bizMethods" expression="execution(* com.springmvc.dataservice.*.*(..))" />
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="bizMethods" />
-    </aop:config>
+
 </beans>

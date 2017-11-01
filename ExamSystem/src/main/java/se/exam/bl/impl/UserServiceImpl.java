@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     public UserEntity login(String userId, String password) {
         UserEntity userEntity = userDAO.getUserByUserId(userId);
-        if (userEntity.getPassword().equals(password)){
+        if (userEntity!=null && userEntity.getPassword().equals(password)){
             return userEntity;
         }
         return null;
