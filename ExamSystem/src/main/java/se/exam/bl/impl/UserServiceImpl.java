@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     public UserEntity login(String userId, String password) {
-        UserEntity userEntity = userDAO.getUserByUserId(userId);
+        UserEntity userEntity = userDAO.getUserByUsername(userId);
         if (userEntity!=null && userEntity.getPassword().equals(password)){
             return userEntity;
         }

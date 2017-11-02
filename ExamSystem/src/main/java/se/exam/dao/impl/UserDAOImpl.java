@@ -6,6 +6,8 @@ import se.exam.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.xml.registry.infomodel.User;
+import java.util.List;
 
 /**
  * Created by wzh on 17/01/2017.
@@ -17,8 +19,13 @@ public class UserDAOImpl implements UserDAO {
     @Resource
     BaseDAOImpl baseDao;
 
-    public UserEntity getUserByUserId(String userId) {
-        return (UserEntity) baseDao.findById(UserEntity.class,userId);
+    public UserEntity getUserByUsername(String username) {
+         List list = baseDao.findByProperty(UserEntity.class, "username", username);
+         if(list.size() > 0){
+             return (UserEntity)list.get(0);
+         }else {
+             return null;
+         }
     }
 
     @Override

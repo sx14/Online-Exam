@@ -31,7 +31,7 @@
         <property name="jdbcUrl" value="${mysqldb.url}">
         </property>
         <property name="user" value="${mysqldb.user}"/>
-        <property name="password" value="=123456"/>
+        <property name="password" value="${mysqldb.password}"/>
         <property name="maxPoolSize" value="40"/>
         <property name="minPoolSize" value="1"/>
         <property name="initialPoolSize" value="1"/>
